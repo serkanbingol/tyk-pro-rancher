@@ -6,7 +6,7 @@ volumePermissions.enabled: true
 
 # Use the storageClass we created earlier
 global:
-  storageClass: tyk-mongo-volume
+  storageClass: tyk-mongo-pv
 
 service:
 
