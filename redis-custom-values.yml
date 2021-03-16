@@ -1,0 +1,14 @@
+persistence:
+  size: 1Gi
+
+# Use the initContainer to change permissions for us so redis can write to the volume
+volumePermissions.enabled: true
+
+# Use the storageClass we created earlier
+global:
+  storageClass: tyk-redis-pv
+
+service:
+ type: ClusterIP
+ port: 6379
+ portName: redis
