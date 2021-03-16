@@ -1,0 +1,23 @@
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+
+  # We can use any name so long as we reference it correctly
+  name: tyk-redis-pv
+
+  # Tell k8s this is our default storageClass
+  annotations: 
+    storageclass.kubernetes.io/is-default-class: "true"
+
+# Use the EBS backend
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+
+# Can also be 'Retain' but we choose delete so we don't accrue volumes during testing.
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+mountOptions:
+  - debug
+volumeBindingMode: Immediate
